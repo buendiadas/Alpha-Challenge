@@ -32,15 +32,10 @@ For Uniswap, there might be ways to extract money from the TVL (for example, by 
 
 For UMA, we found no significant risks to their TVL associated with a potential governance attack.
 
-1. Compound:
-- Treasury at risk: $84.56M (DefiLlama)
-- TVL at risk: $1.954B (DefiLlama)
-2. Uniswap:
-- Treasury at risk: $2.38B
-- TVL at risk: $0
-3. UMA:
-- Treasury at risk: $76.79M (Token Terminal)
-- TVL at risk: $37.14M (DeFiLlama)
 
-
+| DAO | Treasury at risk | TVL at risk |
+| --- | ---------------- | ----------- |
+| Compound | $84.56M (DeFiLlama) | $1.954B (DeFiLlama) |
+| UMA | $76.79M (Token Terminal) | $37.14M (DeFiLlama) |
+| Uniswap | $2.38B | $0 |
 
