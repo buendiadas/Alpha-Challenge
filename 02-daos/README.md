@@ -2,7 +2,7 @@
 You’re a DeFi enthusiast who spends a lot of time participating in and analyzing DAOs, their governance contracts, and their overall level of participation. Over the past couple of years, the market has slowed down and you’ve begun to notice that some DAOs are not the same as they used to be.
 
 
-- a) Identify a set of DAOs that are most vulnerable to an economic governance attack, describe how it may be achieved, and estimate the cost to the attacker.
+## a) Identify a set of DAOs that are most vulnerable to an economic governance attack, describe how it may be achieved, and estimate the cost to the attacker.
 
 Economic governance attacks occur when an attacker acquires sufficient voting power to exceed the intended limits of the governance process, such as by single-handedly proposing and passing a proposal within a DAO. A recent example of this occurred on the Compound platform, where an attacker gamed the governance system to receive a total compensation of 500,000 COMP tokens (worth $22.5M).
 
@@ -24,7 +24,7 @@ For some rough calculations, we can use the last governance attack on Compound a
 
 Assuming the relative cost for Uniswap and UMA is proportional to their market cap, we could estimate an attack cost of $22M for Uniswap and $650K for UMA.
 
-- b) For vulnerable DAOs, estimate and describe the potential benefit for the attacker i.e., how much of the DAO’s treasury is at risk of being stolen? (it can also be a parameter change)
+## b) For vulnerable DAOs, estimate and describe the potential benefit for the attacker i.e., how much of the DAO’s treasury is at risk of being stolen? (it can also be a parameter change)
 
 For Compound, we'll consider the total potential value at risk to be their total TVL, given their upgradeable contracts or parameters.
 
@@ -32,15 +32,10 @@ For Uniswap, there might be ways to extract money from the TVL (for example, by 
 
 For UMA, we found no significant risks to their TVL associated with a potential governance attack.
 
-1. Compound:
-- Treasury at risk: $84.56M (DefiLlama)
-- TVL at risk: $1.954B (DefiLlama)
-2. Uniswap:
-- Treasury at risk: $2.38B
-- TVL at risk: $0
-3. UMA:
-- Treasury at risk: $76.79M (Token Terminal)
-- TVL at risk: $37.14M (DeFiLlama)
 
-
+| DAO | Treasury at risk | TVL at risk |
+| --- | ---------------- | ----------- |
+| Compound | $84.56M (DeFiLlama) | $1.954B (DeFiLlama) |
+| UMA | $76.79M (Token Terminal) | $37.14M (DeFiLlama) |
+| Uniswap | $2.38B | $0 |
 
