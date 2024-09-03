@@ -10,7 +10,7 @@ A governance attack typically involves purchasing or gaining access to enough vo
 
 The cost of purchasing votes depends on multiple factors, with some of the most important being vote concentration, total token capitalization, and average proposal participation. For instance, if a DAO has a market cap of $100M, but only an average of 10% of voters participate in each proposal, an attacker might only need to purchase 5% of the tokens in circulation (or $5M) to successfully execute the attack.
 
-Using vote concentration and decentralization as key factors to determine vulnerability to an attack, we can identify three DAOs that stand out as centralized based on [the following research paper on decentralization metrics](https://www.sciencedirect.com/science/article/pii/S0160791X23000568#fig6):
+Using vote concentration and decentralization as key factors to determine vulnerability to an attack, we can identify three DAOs that stand out as centralized based on different metrics according to [the following research paper on decentralization metrics](https://www.sciencedirect.com/science/article/pii/S0160791X23000568#fig6):
 
 - UMA
 - Compound
