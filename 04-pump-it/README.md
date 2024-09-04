@@ -60,7 +60,7 @@ We will be using this query as inspiration to do the above calculations
     ORDER BY minting_time ASC
     LIMIT 10
     ;
-```
+  ```
 
 2. Get total migrations, with time:
 
