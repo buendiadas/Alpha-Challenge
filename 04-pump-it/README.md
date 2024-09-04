@@ -32,8 +32,8 @@ Given that we didn't find any other fee, we can assume the rest of the revenue c
 
 We will be using this query as inspiration to do the above calculations
 
-    - Took the most time to deploy to Raydium.
-    - Took the least amount of time to deploy to Raydium.
+- Took the most time to deploy to Raydium.
+- Took the least amount of time to deploy to Raydium.
 
     1. Get total mints, with minting time
 
