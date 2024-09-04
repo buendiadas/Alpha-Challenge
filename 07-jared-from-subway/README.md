@@ -24,7 +24,15 @@ We can calculate its profit as the `total_revenue_usd` - `total_cost_usd` = 238.
 
 ###    - Identify the opportunity that yielded the highest single profit.
 
-This query is hard to identify with the curent net inflows approach, as it requires a different approach calculating the unit profit per transaction, which is something doable, but I might be out of time to do it.
+To identify that opportunity it is required the following:
+1. Calculating the net flows per block of all tokens
+2. Having a price for each one of the tokens for that block
+3. Calculating the total value delta as SUM(net flows) * PRICE
+4. Substract gas costs
+
+My aproach above has not been using prices per block, but only calculating the delta value after all transfers. I attach an imperfect query doing the calculation only taking into account weth inflows:
+
+https://dune.com/queries/4044932/6810848/31da048c-edd6-4550-861e-fe1d166ed9cf
 
 ## c) How can you avoid being sandwiched in the future? Provide some reasons that might explain why Jared is out-competing other sandwich enjoyers.
 
