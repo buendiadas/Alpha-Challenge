@@ -23,6 +23,44 @@ It’s May 2021, and while searching for new trading pools, you discovered that 
     - **Total estimated profit:** $310
 - All the simulation can be found under the folder `./simulation`
 - The logical next step would be to atomically close the trade on a more liquid pool (e.g., Uniswap V2). However, this was beyond the scope of the test.
+
+To run the test in question, do the following:
+
+1. Use `14058541` to fork mainnet with anvil.
+2. Run the test
+ `forge test --match-path simulation/test/StaleAmm.t.sol --fork-url  [http://127.0.0.1:8599](http://127.0.0.1:8599/) -vvv`
+
+```shell
+forge test --match-path test/StaleAmm.t.sol --via-ir --fork-url  http://127.0.0.1:8599 -vv 
+
+[⠊] Compiling...
+[⠘] Compiling 26 files with Solc 0.8.24
+[⠃] Solc 0.8.24 finished in 3.83s
+Compiler run successful!
+
+Ran 1 test for test/StaleAmm.t.sol:StaleAmm
+[PASS] testArbitrageJan232022() (gas: 112081)
+Logs:
+  tusdWhale balance:  361392906071290000000000
+  contract eth balance before:  671578643201640554
+  contract tusd balance old before:  2405261049243413614839
+  contract tusd balance new before:  2405261049243413614839
+  sender tusd balance before:  10000000000000000000000
+  sender eth balance before:  671578643201640554
+  Estimated out:  310918147057878056631
+  contract eth balance after:  771578643201640554
+  contract tusd balance old after:  2094342902185535558208
+  contract tusd balance new after:  2094342902185535558208
+  sender tusd balance after:  338004006012642218355
+  sender eth balance after:  771578643201640554
+  estimatedOut after 36728813024969
+  actual out:  310918147057878056631
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 42.92ms (2.09ms CPU time)
+
+Ran 1 test suite in 436.17ms (42.92ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+```
+
 ## c) Could you execute the arbitrage on March 14, 2022? If not, explain why.
 - No. The TUSD token contract was updated on February 24, 2022 (block 14266480) [after a vulnerability was discovered](https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective) in its Compound market due to its double-entry nature. After this block, the contract reverts on any interaction with the old pool.
 
