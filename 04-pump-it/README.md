@@ -53,13 +53,13 @@ We will be using this query as inspiration to do the above calculations
     AND tx_success = TRUE
   GROUP BY
     account_arguments[1]
-)
--- View the minted tokens and their minting time
-SELECT *
-FROM minted_tokens
-ORDER BY minting_time ASC
-LIMIT 10
-;
+    )
+    -- View the minted tokens and their minting time
+    SELECT *
+    FROM minted_tokens
+    ORDER BY minting_time ASC
+    LIMIT 10
+    ;
 ```
 
 2. Get total migrations, with time:
