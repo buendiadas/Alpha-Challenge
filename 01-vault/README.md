@@ -20,7 +20,7 @@ In scenario 3, however, the attacker would have to lose a substantial amount jus
 
 For the sake of this exercise, I'm assuming we're dealing with vulnerability 1, as this was the case for the old OpenZeppelin implementation of ERC4626.
 
-- b)  Produce code that can check if this vulnerability has occurred in the past and determine how much value was lost, if any.
+### b)  Produce code that can check if this vulnerability has occurred in the past and determine how much value was lost, if any.
 
 Assuming we're dealing with the first scenario, we can check if the attack has occurred previously by filtering `Deposit` events on the vault where the assets deposited are greater than 0 and the shares received are 0. 
 
@@ -44,7 +44,7 @@ def check_for_attack(events):
 ```
 
 
-- c)  Write code for the bot that can carry out the exploit (don’t worry about returning user funds).
+### c)  Write code for the bot that can carry out the exploit (don’t worry about returning user funds).
 
 A test on foundry was created replicating the full situation, where the victim got out of tokens, and we were able to get access to 100% of their deposit can be found on `./simulations`
 
