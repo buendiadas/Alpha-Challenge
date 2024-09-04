@@ -5,5 +5,6 @@ Here is a [useful thread](https://x.com/0xMert_/status/1799955514786234751) for 
 
 
 - a) You are aware of Jito's modified Solana client to improve the efficiency of MEV extraction. Describe how unaligned validators can run their own private mempool to facilitate sandwich attacks.
+  - They can broadcast transactions to searchers ahead of finality, providing them an oportunity to execute MEV strategies, like frontrunning or backrunning transactions.
 - b) Identify the validators that had their stake removed, and determine the total amount removed.
 - c) Write code that, given a Solana block, outputs whether a sandwich attack was included.
