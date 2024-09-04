@@ -64,26 +64,26 @@ We will be using this query as inspiration to do the above calculations
 
 2. Get total migrations, with time:
 
-```sql
-WITH launched_tokens AS (
-  -- Get the first launch to Raydium time for each token
-  SELECT
-    account_arguments[3] AS token_address,
-    MIN(block_date) AS launch_time
-  FROM solana.instruction_calls
-  WHERE
-    executing_account = '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P'
-    AND BYTEARRAY_SUBSTRING(data, 1, 8) = FROM_HEX('b712469c946da122') /* global:withdraw sha256 first 8 byte */
-    AND tx_success = TRUE
-  GROUP BY
-    account_arguments[3]
-)
--- View the launched tokens and their launch time
-SELECT *
-FROM launched_tokens
-ORDER BY launch_time ASC
-LIMIT 10;
-```
+    ```sql
+    WITH launched_tokens AS (
+    -- Get the first launch to Raydium time for each token
+    SELECT
+        account_arguments[3] AS token_address,
+        MIN(block_date) AS launch_time
+    FROM solana.instruction_calls
+    WHERE
+        executing_account = '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P'
+        AND BYTEARRAY_SUBSTRING(data, 1, 8) = FROM_HEX('b712469c946da122') /* global:withdraw sha256 first 8 byte */
+        AND tx_success = TRUE
+    GROUP BY
+        account_arguments[3]
+    )
+    -- View the launched tokens and their launch time
+    SELECT *
+    FROM launched_tokens
+    ORDER BY launch_time ASC
+    LIMIT 10;
+    ```
 
 https://dune.com/queries/4044844/6810594/b4755620-66ff-40d6-beb3-09d6a0364f58
 
