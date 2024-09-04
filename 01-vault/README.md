@@ -2,26 +2,29 @@
 You are looking through an old version of the OpenZeppelin implementation of ERC-4626 and notice a vulnerability that requires frontrunning an innocent user. You have been granted a large amount of ETH (say e.g. 1k ETH, but you are free to choose the amount :) ) and want to set up a whitehat bot to execute this exploit and return the funds to the user.
 
 
-- a) Describe the vulnerability and the payoffs for an attacker.
+### a) Describe the vulnerability and the payoffs for an attacker.
 
-The key issue in the ERC-4626 tokenized vault standard is a vulnerability that comes from how shares are calculated when assets are deposited. Specifically, the formula relies on the asset.balanceOf(address(this)) as the denominator, and can be manipulated (frontrunned) by a potential attacker, by making a transfer to the vault contract right before the legitimate transaction to deposit on the Vault
+he key vulnerability in the ERC-4626 tokenized vault standard arises from the calculation of shares during asset deposits. The formula uses `asset.balanceOf(address(this))` as the denominator, which can be manipulated. A potential attacker could exploit this by transferring assets to the vault contract immediately before a legitimate deposit transaction, effectively front-running it.
 
 ``` sharesAmount = totalShares * assetAmount / asset.balanceOf(address(this)) ```
 
-Depending on the implementation an protection mechanisms in place, the potential vulnerability might differ: 
-1.  A vault might be vulnerable to a total loss of funds to the user, going directly to the attacker, if the vault doesn't implement any protection, by achieving rounding the shares of the depositor to 0.
-2.  A vault might be vulnerable to a partial loss of funds if there is protection, by rounding the shares of the depositor to 1
-3. A vault might have proper protection in place by having dead shares, which make impossible to the attacker to make a profit and extremely expensive to make a griefing attack.
+Depending on the implementation and protection mechanisms in place, the potential vulnerability may vary:
 
-The payoffs for the attacker, in 1. are the most important, as he can receive the 100% of the deposit from the innocent user. In 2. he can also ensure a profit. He doesn't take a risk by executing the attack, since he won't be losing funds in any case.
+1. A vault might be vulnerable to a total loss of user funds, which go directly to the attacker, if the vault doesn't implement any protection. This occurs by rounding the depositor's shares to 0.
+2. A vault might be vulnerable to a partial loss of funds if there is some protection, by rounding the depositor's shares to 1.
+3. A vault might have proper protection in place through "dead shares," which make it impossible for the attacker to profit and extremely expensive to launch a griefing attack.
 
-In 3, however, he would have to lose an important quantity just to sabotage the deposit of the user.
+The payoffs for the attacker in scenario 1 are the most significant, as they can receive 100% of the innocent user's deposit. In scenario 2, the attacker can still ensure a profit. They don't risk losing funds in either case when executing the attack.
 
-For the shake of this exercise, I am assuming the implementation we are looking for is having a vulnerability 1, since that was the case for the old OpenZeppeling implementation of ERC4626
+In scenario 3, however, the attacker would have to lose a substantial amount just to sabotage the user's deposit.
+
+For the sake of this exercise, I'm assuming we're dealing with vulnerability 1, as this was the case for the old OpenZeppelin implementation of ERC4626.
 
 - b)  Produce code that can check if this vulnerability has occurred in the past and determine how much value was lost, if any.
 
-Assuming we are in the first scenario, we can make a simple assumption to see if the attack was previously done, by filtering previous Deposit events on the vault, where the assets deposited are > 0 and the shares received are 0. The attacker could have rounded the shares of the victim to 1 but we will assume the attacker doesn't leave money on the table.
+Assuming we're dealing with the first scenario, we can check if the attack has occurred previously by filtering `Deposit` events on the vault where the assets deposited are greater than 0 and the shares received are 0. 
+
+While the attacker could round the victim's shares to 1, we'll assume they maximize their gains. We've created a script to monitor a specific vault, located in `./scripts `
 
 ```python
 def check_for_attack(events):

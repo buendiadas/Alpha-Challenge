@@ -1,6 +1,6 @@
 from web3 import Web3
 
-rpc = 'https://thrilling-dawn-fog.quiknode.pro/d591282baebf5e63ea3aeafac74c72b284797a80/'
+rpc = 'https://thrilling-dawn-fog.quiknode.pro/d591282baebf5e63ea3aeafac74c72b284797a80/' # Replace with your own RPC endpoint, included for testing purposes
 web3 = Web3(Web3.HTTPProvider(rpc))
 
 # Replace with the ERC-4626 contract address and ABI
